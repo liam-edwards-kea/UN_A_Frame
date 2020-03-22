@@ -3,23 +3,52 @@
 <head>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script>
+        AFRAME.registerComponent('play-pause', {
+            init: function() {
+                var myVideo = document.querySelector('#plasticGraph');
+                var videoControls = document.querySelector('#videoControls');
+                this.el.addEventListener('click', function() {
+                    if (myVideo.paused) {
+                        myVideo.play();
+                        videoControls.setAttribute('src', '#pause');
+                    } else {
+                        myVideo.pause();
+                        videoControls.setAttribute('src', '#play');
+                    }
+                });
+            }
+        });
+    </script>
 </head>
 
 <body>
     <a-scene>
         <a-assets>
+            <a-asset-item id="play" src="button%20copy.png"></a-asset-item>
+            <a-asset-item id="pause" src="button%20copy.png"></a-asset-item>
             <a-asset-item id="boat" src="boat09/scene.gltf"></a-asset-item>
             <a-asset-item id="coral" src="fortnite_-_fishstick_set/scene.gltf"></a-asset-item>
             <a-asset-item id="plastic" src="low-poly_plastic_cup_free_download/scene.gltf"></a-asset-item>
             <a-asset-item id="plastic2" src="noams_plastic_bottle_with_droplets_and_haze/scene.gltf"></a-asset-item>
             <a-asset-item id="plasticBag" src="plastic_bag/scene.gltf"></a-asset-item>
+            <a-asset-item id="trash" src="trash_bag_v2_free/scene.gltf"></a-asset-item>
+            <video id="plasticGraph" src="Comp%202.mp4" loop="true"></video>
         </a-assets>
         <a-entity environment="preset: arches"></a-entity>
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
+   <a-video data-brackets-id="5036" src="#plasticGraph" width="8" height="8" position="6.85176 11.14592 16.02876" material="" geometry="" scale="2.09 1.31 1.28" rotation="45 180 0">
+            <a-image data-brackets-id="5037" id="videoControls" src="#pause" position="-0.08164 -4.74262 0" scale="2 2 2.5" play-pause="" material="" geometry="">
+            </a-image>
+        </a-video>
         <a-entity data-brackets-id="133" position="0.90112 -10.10514 -53.24486" gltf-model="boat09/scene.gltf" scale="0.07 0.1 0.09"></a-entity>
-        <a-entity data-brackets-id="342" scale="0.08 0.07 0.08" rotation="0 90 0" position="-16.96073 0 17.01289" gltf-model="fortnite_-_fishstick_set/scene.gltf"></a-entity>
+        <a-entity data-brackets-id="835" scale="0.04 0.04 0.05" rotation="0 90 0" position="-16.96073 0.84647 14.12542" gltf-model="fortnite_-_fishstick_set/scene.gltf"></a-entity>
         <a-entity data-brackets-id="388" gltf-model="low-poly_plastic_cup_free_download/scene.gltf" position="8.84547 0.12119 10.01116"></a-entity>
         <a-entity data-brackets-id="526" position="9.01035 -0.59135 13.14711" rotation="" gltf-model="noams_plastic_bottle_with_droplets_and_haze/scene.gltf"></a-entity>
         <a-entity data-brackets-id="678" position="5.31557 0.50849 10.72177" rotation="0 200 0" gltf-model="plastic_bag/scene.gltf" scale="2 2 2"></a-entity>
+        <a-entity data-brackets-id="813" position="7.11913 0.60237 8.19685" rotation="" gltf-model="trash_bag_v2_free/scene.gltf" scale="1.5 1.5 1.5"></a-entity>
         <a-box></a-box>
         <a-sphere></a-sphere>
         <a-cylinder></a-cylinder>
