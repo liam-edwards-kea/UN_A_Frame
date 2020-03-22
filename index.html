@@ -19,6 +19,25 @@
                 });
             }
         });
+
+    </script>
+    <script>
+        AFRAME.registerComponent('go-stop', {
+            init: function() {
+                var myVideo = document.querySelector('#coralGraph');
+                var videoControls = document.querySelector('#videoControls2');
+                this.el.addEventListener('click', function() {
+                    if (myVideo.paused) {
+                        myVideo.play();
+                        videoControls.setAttribute('src', '#go');
+                    } else {
+                        myVideo.pause();
+                        videoControls.setAttribute('src', '#stop');
+                    }
+                });
+            }
+        });
+
     </script>
 </head>
 
@@ -34,13 +53,18 @@
             <a-asset-item id="plasticBag" src="plastic_bag/scene.gltf"></a-asset-item>
             <a-asset-item id="trash" src="trash_bag_v2_free/scene.gltf"></a-asset-item>
             <video id="plasticGraph" src="Comp%202.mp4" loop="true"></video>
+            <video id="coralGraph" src="pie.mp4" loop="true"></video>
         </a-assets>
         <a-entity environment="preset: arches"></a-entity>
         <a-camera>
             <a-cursor></a-cursor>
         </a-camera>
-   <a-video data-brackets-id="5036" src="#plasticGraph" width="8" height="8" position="6.85176 11.14592 16.02876" material="" geometry="" scale="2.09 1.31 1.28" rotation="45 180 0">
+        <a-video data-brackets-id="5036" src="#plasticGraph" width="8" height="8" position="6.85176 13.59746 16.02876" material="" geometry="" scale="2.09 1.31 1.28" rotation="45 180 0">
             <a-image data-brackets-id="5037" id="videoControls" src="#pause" position="-0.08164 -4.74262 0" scale="2 2 2.5" play-pause="" material="" geometry="">
+            </a-image>
+        </a-video>
+      <a-video data-brackets-id="5036" src="#coralGraph" width="8" height="8" position="-15.66849 13.94663 18.72016" material="" geometry="" scale="1.79 1.19 1.28" rotation="45 130 0">
+           <a-image data-brackets-id="5037" id="videoControls2" src="#stop" position="-0.12349 -3.76462 2.39536" scale="2 2 2.5" go-stop="" material="" geometry="">
             </a-image>
         </a-video>
         <a-entity data-brackets-id="133" position="0.90112 -10.10514 -53.24486" gltf-model="boat09/scene.gltf" scale="0.07 0.1 0.09"></a-entity>
@@ -55,4 +79,6 @@
         <a-plane></a-plane>
         <a-sky></a-sky>
     </a-scene>
-</body></html>
+</body>
+
+</html>
