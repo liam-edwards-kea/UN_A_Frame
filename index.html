@@ -39,6 +39,24 @@
         });
 
     </script>
+    <script>
+        AFRAME.registerComponent('start-finish', {
+            init: function() {
+                var myVideo = document.querySelector('#fishingGraph');
+                var videoControls = document.querySelector('#videoControls3');
+                this.el.addEventListener('click', function() {
+                    if (myVideo.paused) {
+                        myVideo.play();
+                        videoControls.setAttribute('src', '#start');
+                    } else {
+                        myVideo.pause();
+                        videoControls.setAttribute('src', '#finish');
+                    }
+                });
+            }
+        });
+
+    </script>
 </head>
 
 <body>
@@ -54,6 +72,7 @@
             <a-asset-item id="trash" src="trash_bag_v2_free/scene.gltf"></a-asset-item>
             <video id="plasticGraph" src="Comp%202.mp4" loop="true"></video>
             <video id="coralGraph" src="pie.mp4" loop="true"></video>
+            <video id="fishingGraph" src="lineGraph.mp4" loop="true"></video>
         </a-assets>
         <a-entity environment="preset: arches"></a-entity>
         <a-camera>
@@ -63,11 +82,15 @@
             <a-image data-brackets-id="5037" id="videoControls" src="#pause" position="-0.08164 -4.74262 0" scale="2 2 2.5" play-pause="" material="" geometry="">
             </a-image>
         </a-video>
-      <a-video data-brackets-id="5036" src="#coralGraph" width="8" height="8" position="-15.66849 13.94663 18.72016" material="" geometry="" scale="1.79 1.19 1.28" rotation="45 130 0">
-           <a-image data-brackets-id="5037" id="videoControls2" src="#stop" position="-0.12349 -3.76462 2.39536" scale="2 2 2.5" go-stop="" material="" geometry="">
+        <a-video data-brackets-id="5036" src="#coralGraph" width="8" height="8" position="-15.66849 13.94663 18.72016" material="" geometry="" scale="1.79 1.19 1.28" rotation="45 130 0">
+            <a-image data-brackets-id="5037" id="videoControls2" src="#stop" position="-0.12349 -3.76462 2.39536" scale="2 2 2.5" go-stop="" material="" geometry="">
             </a-image>
         </a-video>
-        <a-entity data-brackets-id="133" position="0.90112 -10.10514 -53.24486" gltf-model="boat09/scene.gltf" scale="0.07 0.1 0.09"></a-entity>
+        <a-video data-brackets-id="1010" src="#fishingGraph" width="8" height="8" position="-13.03326 17.2092 -12.62939" material="" geometry="" scale="2.24 1.82 1.28" rotation="29.999999999999996 20 0">
+            <a-image data-brackets-id="1011" id="videoControls3" src="#finish" position="-0.08164 -4.74262 0" scale="2 2 2.5" start-finish="" material="" geometry="">
+            </a-image>
+        </a-video>
+        <a-entity data-brackets-id="1095" position="-2.94984 -4.66688 -53.24486" gltf-model="boat09/scene.gltf" scale="0.07 0.1 0.09"></a-entity>
         <a-entity data-brackets-id="835" scale="0.04 0.04 0.05" rotation="0 90 0" position="-16.96073 0.84647 14.12542" gltf-model="fortnite_-_fishstick_set/scene.gltf"></a-entity>
         <a-entity data-brackets-id="388" gltf-model="low-poly_plastic_cup_free_download/scene.gltf" position="8.84547 0.12119 10.01116"></a-entity>
         <a-entity data-brackets-id="526" position="9.01035 -0.59135 13.14711" rotation="" gltf-model="noams_plastic_bottle_with_droplets_and_haze/scene.gltf"></a-entity>
